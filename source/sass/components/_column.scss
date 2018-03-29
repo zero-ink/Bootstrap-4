@@ -1,0 +1,251 @@
+/// Breakpoints
+/// wanna get more information, please check this website http://hugeinc.github.io/flexboxgrid-sass/
+/// @example
+/// a { max-width: breakpoint(lg); }
+@function breakpoint($name) {
+    @return #{map-get($breakpoints, $name)};
+}
+
+@mixin flexgrid {
+    box-sizing: border-box;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    padding-right: #{map-get($sizes, default)};
+    padding-left: #{map-get($sizes, default)};
+}
+
+// container
+.container {
+    max-width: $shopMaxWidth;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.wrapper {
+    box-sizing: border-box;
+    max-width: breakpoint(lg);
+    margin: 0 auto;
+}
+
+// Container fluid
+.container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+// Rows
+.row {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    //margin-left: -#{map-get($sizes, default)};
+    //margin-right: -#{map-get($sizes, default)};
+
+    // for revers
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+// Columns
+.col {
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+.col-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+
+    padding-right: #{map-get($sizes, default)};
+    padding-left: #{map-get($sizes, default)};
+
+    @include media(md) {
+        padding-right: #{map-get($sizes, default)};
+        padding-left: #{map-get($sizes, default)};
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media only screen and (max-width: #{ nth($breakpointSizes, 1) - 1}) {
+    .hidden-xs-down {
+        display: none !important;
+    }
+}
+
+// Build Column xl,l,m,s,xs
+@for $break from 1 through length($breakpointNames) {
+    $breakpointName: nth($breakpointNames, $break);
+    $breakpointSize: nth($breakpointSizes, $break);
+    @if $breakpointName == xs {
+        @for $i from 0 through $grid-columns {
+            .col-#{nth($breakpointNames,$break)}-offset-#{$i} {
+                @include flexgrid;
+                @if $i == 0 {
+                    margin-left: 0;
+                } @else {
+                    margin-left: 100% / $grid-columns * $i;
+                }
+            }
+        }
+        @for $i from 1 through $grid-columns {
+            .col-#{nth($breakpointNames,$break)}-#{$i} {
+                @include flexgrid;
+                flex-basis: 100% / $grid-columns * $i;
+                max-width: 100% / $grid-columns * $i;
+            }
+        }
+        .start-#{nth($breakpointNames,$break)} {
+            justify-content: flex-start;
+            text-align: start;
+        }
+        .center-#{nth($breakpointNames,$break)} {
+            justify-content: center;
+            text-align: center;
+        }
+        .end-#{nth($breakpointNames,$break)} {
+            justify-content: flex-end;
+            text-align: end;
+        }
+        .top-#{nth($breakpointNames,$break)} {
+            align-items: flex-start;
+        }
+        .middle-#{nth($breakpointNames,$break)} {
+            align-items: center;
+        }
+        .bottom-#{nth($breakpointNames,$break)} {
+            align-items: flex-end;
+        }
+        .around-#{nth($breakpointNames,$break)} {
+            justify-content: space-around;
+        }
+        .between-#{nth($breakpointNames,$break)} {
+            justify-content: space-between;
+        }
+        .first-#{nth($breakpointNames,$break)} {
+            order: -1
+        }
+        .last-#{nth($breakpointNames,$break)} {
+            order: 1
+        }
+    } @else {
+        @media only screen and (min-width: $breakpointSize) {
+            [class*="col-#{nth($breakpointNames,$break)}"],
+            [class*="col-#{nth($breakpointNames,$break)}-offset-"] {
+                box-sizing: border-box;
+                flex: 0 0 auto;
+                box-sizing: border-box;
+                flex-grow: 0;
+                flex-shrink: 0;
+
+                padding-right: #{map-get($sizes, default)};
+                padding-left: #{map-get($sizes, default)};
+
+                @include media(md) {
+                    padding-right: #{map-get($sizes, default)};
+                    padding-left: #{map-get($sizes, default)};
+                }
+            }
+            @for $i from 0 through $grid-columns {
+                .col-#{nth($breakpointNames,$break)}-offset-#{$i} {
+                    @if $i == 0 {
+                        margin-left: 0;
+                    } @else {
+                        margin-left: 100% / $grid-columns * $i;
+                    }
+                }
+            }
+            @for $i from 1 through $grid-columns {
+                .col-#{nth($breakpointNames,$break)}-#{$i} {
+                    flex-basis: 100% / $grid-columns * $i;
+                    max-width: 100% / $grid-columns * $i;
+                }
+            }
+            .start-#{nth($breakpointNames,$break)}-up {
+                justify-content: flex-start;
+                text-align: start;
+            }
+            .center-#{nth($breakpointNames,$break)}-up {
+                justify-content: center;
+                text-align: center;
+            }
+            .end-#{nth($breakpointNames,$break)}-up {
+                justify-content: flex-end;
+                text-align: end;
+            }
+            .top-#{nth($breakpointNames,$break)}-up {
+                align-items: flex-start;
+            }
+            .middle-#{nth($breakpointNames,$break)}-up {
+                align-items: center;
+            }
+            .bottom-#{nth($breakpointNames,$break)}-up {
+                align-items: flex-end;
+            }
+            .around-#{nth($breakpointNames,$break)}-up {
+                justify-content: space-around;
+            }
+            .between-#{nth($breakpointNames,$break)}-up {
+                justify-content: space-between;
+            }
+            .first-#{nth($breakpointNames,$break)}-up {
+                order: -1;
+            }
+            .last-#{nth($breakpointNames,$break)}-up {
+                order: 1;
+            }
+            .hidden-#{nth($breakpointNames,$break)}-up {
+                display: none !important;
+            }
+        }
+        @media only screen and (max-width: $breakpointSize - 1) {
+            .start-#{nth($breakpointNames,$break)}-down {
+                justify-content: flex-start;
+                text-align: start;
+            }
+            .center-#{nth($breakpointNames,$break)}-down {
+                justify-content: center;
+                text-align: center;
+            }
+            .end-#{nth($breakpointNames,$break)}-down {
+                justify-content: flex-end;
+                text-align: end;
+            }
+            .top-#{nth($breakpointNames,$break)}-down {
+                align-items: flex-start;
+            }
+            .middle-#{nth($breakpointNames,$break)}-down {
+                align-items: center;
+            }
+            .bottom-#{nth($breakpointNames,$break)}-down {
+                align-items: flex-end;
+            }
+            .around-#{nth($breakpointNames,$break)}-down {
+                justify-content: space-around;
+            }
+            .between-#{nth($breakpointNames,$break)}-down {
+                justify-content: space-between;
+            }
+            .first-#{nth($breakpointNames,$break)}-down {
+                order: -1;
+            }
+            .last-#{nth($breakpointNames,$break)}-down {
+                order: 1;
+            }
+            .hidden-#{nth($breakpointNames,$break)}-down {
+                display: none !important;
+            }
+        }
+    }
+}

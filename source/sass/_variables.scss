@@ -1,0 +1,200 @@
+/// color
+$colors: (
+        black: (
+                base: #1D1D1D,
+                lighten-1: rgba(29, 29, 29, 0.5),
+                darken-1: #000,
+        ),
+        grey: (
+                base: #BDBDBD,
+                lighten-2: rgba(227, 227, 227, 0.3),
+                lighten-1: #F3F3F3,
+                darken-1: #CFCFCF,
+                darken-2: #4A4A4A,
+                darken-3: #979797,
+                darken-4: #D8D8D8,
+        ),
+        white: (
+                base: #FFF,
+                darken-1: #B8B8B8,
+        ),
+        pink: (
+                base: #F06,
+        ),
+        red: (
+                base: #FF5A5A,
+        ),
+        green: (
+                base: #6ACD2B,
+        ),
+    // Bitte anpassen oder löschen wenn nicht benötigt wird
+        placeholder: (
+                "base": #F0F,
+        ),
+) !default;
+
+/// General Sizes
+$unit: px;
+
+$sizes: (
+        default: 10px,
+        gridPadding: 15px,
+        spacingTop: 55px,
+        spacingBottom: 55px,
+    // Newsletter height
+        newsletter: (
+                xs: 215px,
+                sm: 285px,
+                md: 400px,
+        ),
+        mobileArticleHeader: (
+                xs: 35px,
+                sm: 50px,
+        )
+);
+
+/// General Font-Size
+$fontSizes: (
+        listItem: 16px,
+        price: (
+                small: 12px,
+                small-sm: 14px,
+                big: 24px,
+                sale-first-type: 17px,
+        ),
+        icon: (
+                default: 18px,
+                md: 29px,
+        ),
+);
+
+/// Line Height
+$lineHeight: (
+        listItem: 30px,
+        listTitle: 45px,
+        price: (
+                small: 21px,
+                big: 27px,
+                cart-line: 30px,
+                sale-first-type: 19px,
+        ),
+);
+
+/// Letter Space
+$letterSpaces: (
+        default: 1.5px,
+        price: (
+                sale: 0.5px,
+        ),
+);
+
+/// Breakpoints
+/// Default Breakpoints for Mixins
+$breakpointNames: (xs, sm, md, lg, xl);
+$breakpointSizes: (335px, 724px, 1024px, 1160px, 1200px);
+$breakpoints: (
+        default: '',
+        #{nth($breakpointNames,1)}: #{nth($breakpointSizes,1)},
+        #{nth($breakpointNames,2)}: #{nth($breakpointSizes,2)},
+        #{nth($breakpointNames,3)}: #{nth($breakpointSizes,3)},
+        #{nth($breakpointNames,4)}: #{nth($breakpointSizes,4)},
+        #{nth($breakpointNames,5)}: #{nth($breakpointSizes,5)},
+);
+
+/// Shop max width
+$shopMaxWidth: #{nth($breakpointSizes,5)};
+
+/// Grids
+/// Grid columns default is 12
+$grid-columns: 12 !default;
+
+/// Paddings
+$paddings: (
+        default: #{map-get($sizes, default)},
+        footer_content: #{map-get($sizes, default) * 3.5},
+        footer: #{map-get($sizes, default) * 4.5},
+);
+/// Margins
+$margins: (
+        default: #{map-get($sizes, default)},
+);
+
+/// Togglebox
+$togglebox: (
+        color: (
+                after: rgba(255, 255, 255, 0),
+                before: rgba(194, 225, 245, 0),
+        ),
+);
+
+/// Roboto
+$primaryFont: 'Roboto', sans-serif;
+
+/// Roboto
+$secondaryFont: 'Roboto', sans-serif;
+
+/// Headlines
+$headlines: (
+        h1: (
+                default: (
+                        font-family: $primaryFont,
+                        color: #{ map-get(map-get($colors,black), base)},
+                        font-size: 36px,
+                        line-height: 49px,
+                        letter-spacing: 3px,
+                        font-weight: 300,
+                )
+        ),
+        h2: (
+                default: (
+                        font-family: $primaryFont,
+                        color: #{ map-get(map-get($colors,black), base)},
+                        font-size: 24px,
+                        line-height: 28px,
+                        letter-spacing: 1px,
+                        font-weight: 300,
+                )
+        ),
+        h3: (
+                default: (
+                        font-family: $primaryFont,
+                        color: #{ map-get(map-get($colors,black), base)},
+                        font-size: 18px,
+                        line-height: 24px,
+                        letter-spacing: 1.5px,
+                        font-weight: 400,
+                )
+        ),
+        h4: (
+                default: (
+                        font-family: $primaryFont,
+                        color: #{ map-get(map-get($colors,black), base)},
+                        font-size: 18px,
+                        line-height: 22px,
+                        letter-spacing: 1.5px,
+                        font-weight: 300,
+                )
+        ),
+        h5: (
+                default: (
+                        font-family: $primaryFont,
+                        color: #{ map-get(map-get($colors,black), darken-1)},
+                        font-size: 14px,
+                        line-height: 24px,
+                        letter-spacing: 0.3px,
+                        font-weight: 700,
+                )
+        ),
+);
+
+/// Paragraph
+$paragraph: (
+        default: (
+                font-family: $primaryFont,
+                color: #{ map-get(map-get($colors,black), base)},
+                font-size: 14px,
+                line-height: 25px,
+                letter-spacing: 0.3px,
+                font-weight: 300,
+        ),
+);

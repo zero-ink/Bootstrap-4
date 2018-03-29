@@ -1,0 +1,21 @@
+{
+    "name": "gulp_sass_js_starter",
+    "description": "gulp, server, livereload",
+    "main": "index.js",
+    "authors": [
+        "Anh Tuan Nguyen"
+    ],
+    "license": "ISC",
+    "homepage": "https://github.com/1tuan1/gulp-sass-js-starter",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "jquery": "^3.1.1"
+    }
+}

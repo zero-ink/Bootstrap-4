@@ -1,0 +1,24 @@
+/// Array Color
+/// @group Color
+/// @parameter
+/// create a loop of color classes
+/// @example
+/// <a class="color-3">i have a color nr 3</a>
+
+// Vorerst wird es nicht gebraucht
+
+//@each $name in $colors {
+//    @if ($name) {
+//        .color-#{nth($name,1)} {
+//            color: #{nth($name,2)};
+//        }
+//    }
+//}
+
+/// Color function
+/// @example
+/// a { color: colors(black); }
+/// div { background-color: colors(grey,darken-1); }
+@function colors($name,$child: "base") {
+    @return #{ map-get(map-get($colors,$name), $child)};
+}

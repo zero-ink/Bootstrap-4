@@ -1,0 +1,6 @@
+{
+  "name": "Gulp-sass-js-starter",
+  "tagline": "Web Developer Styling and JS Helper",
+  "body": "### Welcome to Gulp-Sass-Js-starter\r\n\r\nwith this helper, you can start your project from begin with everything that you need for Frontend.\r\n\r\nAll Feature\r\n* [Gulp](http://gulpjs.com/)\r\n* [browsersync](https://browsersync.io/)\r\n* Watch\r\n\r\n---\r\nIn the future, I will add more functions to help you and me to make it better, faster and easier.",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
